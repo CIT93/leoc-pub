@@ -1,4 +1,4 @@
-const myvalue1 = 10 
+const myvalue1 = 10
 const myvalue2 = 2
 const myvalue3 = 10
 const myvalue4 = 2
