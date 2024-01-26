@@ -19,7 +19,7 @@ if (numberinHousehold === 1){
 console.log("based on the number of members in the household of $(numberinHousehold) the points would be $(carbonfootprintPoints).");
 
 let carbonfootprintPts = 0;
-//const numberinHousehold = 3;
+const numberinHousehold = 3;
 
 // global scope
 
