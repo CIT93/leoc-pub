@@ -34,33 +34,59 @@ function determineHouseHoldPts(numbersInHousehold) {
 
   return houseHoldPoints;
 }
+function displayOutObj(obj){
+console.log(obj);
+    const output = document.getElementById("output");
+    const newH2 = document.getElementById("h2");
+    newH2.textContent = `Carbon Footprint total is ${obj.cfpTotal}`;
+    output.appendChild(newH2);
+}
 
 function start(houseHoldMembers, houseSize) {
   const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
   const houseSizePTS = determineHouseSizePts(houseSize);
   const total = houseHoldPTS + houseSizePTS;
-  cfpData.push([
-    houseHoldMembers,
-    houseSize,
-    houseHoldPTS,
-    houseSizePTS,
-    total,
-  ]);
+cfpData.push({
+    houseM: houseHoldMembers,
+    houseS: houseSize,
+    houseMPoints: houseHoldPTS,
+   houseSPoints: houseSizePTS,
+    cfpTotal: total
+  });
 }
+// displayOutObj(cfpObj);
+
+//   cfpData.push([
+//     houseHoldMembers,
+//     houseSize,
+//     houseHoldPTS,
+//     houseSizePTS,
+//     total,
+//   ]);
+// }
 
 function displayOutput() {
   for (obj of cfpData) {
-    console.log(arr);
+    console.log(obj);
     const output = document.getElementById("output");
+    const newH2 = document.getElementById("h2");
+    newH2.textContent = `Carbon Footprint total is ${obj.cfpTotal}`;
+    const newH3 = document.getElementById("h3");
+    newH3.textContent = 'based on size of house and numbers of members in it.'
     const newP = document.createElement("p");
-    newP.textContent = `Carbon Footprint total is ${arr[4]}`;
-   output.appendChild(newP)
+    newP.textContent = `if you live in a ${obj} with members of ${obj.cfpTotal} your total is ${obj.cfpTotal}`;
+    output.appendChild(newH2);
+    output.appendChild(newH3);
+   output.appendChild(newP);
   }
 } 
+
+
+
 
 start(5, "large");
 start(4, "medium");
 start(3, "small");
 start(2, "apt");
 
-displayOutput()
+console.log(cfpData)
