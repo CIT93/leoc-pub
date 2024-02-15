@@ -3,12 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 6 - Cardon footprint </title>
-    <script  src="main.js"></script>
+    <title>Week 6 Code Along - Cardon footprint </title>
+    <style>
+        html {
+            font-size: 20px;
+        }
+        body {
+            background-color: bisque;
+            color: rgb(0, 0, 0);
+        }
+input:in-range{
+    background-color: green;
+}
+input:out-of-range{
+background-color: blueviolet;    
+}
+    </style>
 </head>
 <body>
-   <div id="output">
-   
-   </div>
+    <form id="form">
+        <fieldset>
+            <legend>Calculating Your Carbon Footprint Points</legend>
+            <div>
+                <label>First Name:</label>
+                <input type="text" name="firstname" min="1" max="15" required />
+            </div>
+            <div>
+                <label>Last Name:</label>
+                <input type="text" name="lastname" min="1" max="15" required />
+            </div>
+            <div>
+                <label>How many members are in your house?</label>
+                <input type="number" name="houseMBS" min="1" max="6" required />
+            </div>
+            <div>
+                <label>Consider the size of your house</label>
+                <!-- <input type="text" name="houseSZE" required /> -->
+                <select name="houseSZE" required>
+                    <option value="">---Please enter size of home---</option>
+                    <option value="large">Large</option>
+                    <option value="medium">Medium</option>
+                    <option value="small">Small</option>
+                    <option value="apt">Apartment</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+   <div id="output">  </div>
 </body>
 </html>

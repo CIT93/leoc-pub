@@ -1,20 +1,22 @@
-const cfpData = [1];
+const FORM = document.getElementById("form");
+const OUTPUT = document.getElementById("output");
+const cfpData = [];
 
-function determineHouseSizePts(size) {
-  console.log("inside block scope");  let houseSizePts = 0;
+function determineHouseSizePts(size){
+  let houseSizePts = 0;
   if (size === "large") {
     houseSizePts = 10;
-  } else if (size === "medium") {    houseSizePts = 7;
+  } else if (size === "medium") {
+    houseSizePts = 7;
   } else if (size === "small") {
     houseSizePts = 4;
   } else if (size === "apt") {
-    houseSizePts = 2;  }
-
+    houseSizePts = 2;
+  }
   return houseSizePts;
 }
 
-function determineHouseHoldPts(numbersInHousehold) {
-  console.log("inside block scope");
+function determineHouseHoldPts(numbersInHousehold){
   let houseHoldPoints = 0;
   if (numbersInHousehold === 1) {
     houseHoldPoints = 14;
@@ -31,61 +33,50 @@ function determineHouseHoldPts(numbersInHousehold) {
   } else if (numbersInHousehold > 6) {
     houseHoldPoints = 2;
   }
-
   return houseHoldPoints;
 }
-function displayOutObj(obj){
-console.log(obj);
-    const output = document.getElementById("output");
-    const newH2 = document.getElementById("h2");
-    newH2.textContent = `Carbon Footprint total is ${obj.cfpTotal}`;
-    output.appendChild(newH2);
-}
 
-function start(houseHoldMembers, houseSize) {
+function start(houseHoldMembers, houseSize){
   const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
   const houseSizePTS = determineHouseSizePts(houseSize);
   const total = houseHoldPTS + houseSizePTS;
-cfpData.push({
+  cfpData.push({
     houseM: houseHoldMembers,
     houseS: houseSize,
     houseMPoints: houseHoldPTS,
-   houseSPoints: houseSizePTS,
-    cfpTotal: total
+    houseSPoints: houseSizePTS,
+    cfpTotal: total,
   });
 }
-// displayOutObj(cfpObj);
 
-//   cfpData.push([
-//     houseHoldMembers,
-//     houseSize,
-//     houseHoldPTS,
-//     houseSizePTS,
-//     total,
-//   ]);
-// }
-
-function displayOutput() {
-  const output = document.getElementById("output");
+function displayOutput(){
   for (obj of cfpData) {
     const newH2 = document.getElementById("h2");
     newH2.textContent = `Carbon Footprint total is ${obj.cfpTotal}`;
     const newH3 = document.getElementById("h3");
-    newH3.textContent = 'based on size of house and numbers of members in it.'
+    newH3.textContent = 'based on size of house and numbers of members in it.';
     const newP = document.createElement("p");
-    newP.textContent = `if you live in a ${obj} with members of ${obj.cfpTotal} your total is ${obj.cfpTotal}`;
-    output.appendChild(newH2);
-    output.appendChild(newH3);
-   output.appendChild(newP);
+    newP.textContent = `if you live in a ${obj.houseS} with members of ${obj.houseMPoints} your total is ${obj.cfpTotal}`;
+    OUTPUT.appendChild(newH2);
+    OUTPUT.appendChild(newH3);
+    OUTPUT.appendChild(newP);
   }
-} 
+}
 
 
+FORM.addEventListener("submit", function(e){
+  e.preventDefault();
+  const firstName = FORM.firstname.value;
+  const lastName = FORM.lastname.value;
+  const houseMBS = parseInt(FORM.houseMBS.value);
+  const houseSZE = FORM.houseSZE.value;
+  start(houseMBS, houseSZE);
+  OUTPUT.innerHTML = "";
+  displayOutput();
+  FORM.reset();
+})
 
 
-start(5, "large");
-start(4, "medium");
-start(3, "small");
-start(2, "apt");
+// Yes because it used all the output code to calculate it right.
 
-console.log(cfpData)
+// we are doing all this work in the form because it makes it way less margin of error for a user to give you bad data. 
