@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script defer src="main.js"></script>
+   <script defer  src="main.js"></script>
     <title>Week 6 Code Along - Cardon footprint </title>
     <style>
         html {
@@ -27,15 +27,15 @@ background-color: blueviolet;
             <legend>Calculating Your Carbon Footprint Points</legend>
             <div>
                 <label>First Name:</label>
-                <input type="text" name="firstNM"  required />
+                <input type="text" id="firstname" name="firstname"  maxlength="20"  required >
             </div>
             <div>
                 <label>Last Name:</label>
-                <input type="text" name="lastNM" minlength="1" maxlength="20" required />
+                <input type="text" id="lastname" name="lastname" maxlength="20" required >
             </div>
             <div>
                 <label>How many members are in your house?</label>
-                <input type="number" name="houseMBS" min="1" max="6" required />
+                <input type="number" name="houseMBS" min="1" max="6" required >
             </div>
             <div>
                 <label>Consider the size of your house</label>
@@ -51,6 +51,7 @@ background-color: blueviolet;
             <button type="submit">Submit</button>
         </fieldset>
     </form>
-   <div id="output">  </div>
+   <div id="output">
+   </div>
 </body>
 </html>

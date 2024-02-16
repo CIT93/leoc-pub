@@ -36,28 +36,28 @@ function determineHouseHoldPts(numbersInHousehold){
   return houseHoldPoints;
 }
 
-function start(houseHoldMembers, houseSize, firstNM, lastNM){
+function start(houseHoldMembers, houseSize, lastname, firstname,){
   const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
   const houseSizePTS = determineHouseSizePts(houseSize);
   const total = houseHoldPTS + houseSizePTS;
   cfpData.push({
-firstN: firstNM,
-lastN: lastNM,
     houseM: houseHoldMembers,
     houseS: houseSize,
     houseMPoints: houseHoldPTS,
     houseSPoints: houseSizePTS,
+    firstN: firstname,
+lastN: lastname,
     cfpTotal: total,
   });
 }
 
-function displayOutput(){
+function displayOutput(obj){
   for (obj of cfpData) {
     const newH1 = document.createElement("h1");
-    newH1.textContent = `${obj.firstNM} ${obj.lastNM}:`;
-    const newH2 = document.getElementById("h2");
+    newH1.textContent = `Dear ${obj.firstN} ${obj.lastN}:`;
+    const newH2 = document.createElement("h2");
     newH2.textContent = `Carbon Footprint total is ${obj.cfpTotal}`;
-    const newH3 = document.getElementById("h3");
+    const newH3 = document.createElement("h3");
     newH3.textContent = 'based on size of house and numbers of members in it.';
     const newP = document.createElement("p");
     newP.textContent = `if you live in a ${obj.houseS} with members of ${obj.houseMPoints} your total is ${obj.cfpTotal}`;
@@ -71,13 +71,13 @@ function displayOutput(){
 
 FORM.addEventListener("submit", function(e){
   e.preventDefault();
-  const firstNM = FORM.firstNM.value;
-  const lastNM = FORM.lastNM.value;
+  const firstname = FORM.firstname.value;
+  const lastname = FORM.lastname.value;
   const houseMBS = parseInt(FORM.houseMBS.value);
   const houseSZE = FORM.houseSZE.value;
-  start(houseMBS, houseSZE);
+  start(houseMBS, houseSZE, lastname, firstname);
   OUTPUT.innerHTML = "";
-  displayOutput();
+  displayOutput(cfpData);
   FORM.reset();
 })
 
