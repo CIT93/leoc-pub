@@ -60,7 +60,7 @@ function displayOutput(obj){
     const newH3 = document.createElement("h3");
     newH3.textContent = 'based on size of house and numbers of members in it.';
     const newP = document.createElement("p");
-    newP.textContent = `if you live in a ${obj.houseS} with members of ${obj.houseMPoints} your total is ${obj.cfpTotal}`;
+    newP.textContent = `if you live in a ${obj.houseS} with members of ${obj.houseM} your total is ${obj.cfpTotal}`;
     OUTPUT.appendChild(newH1);
     OUTPUT.appendChild(newH2);
     OUTPUT.appendChild(newH3);
