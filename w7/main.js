@@ -5,13 +5,13 @@ const FORM = document.getElementById("form");
 const OUTPUT = document.getElementById("output");
 const cfpData = [];
 
-function start( firstname,lastname,houseHoldMembers, houseSize){
+function start( firstName,lastName,houseHoldMembers, houseSize){
   const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
   const houseSizePTS = determineHouseSizePts(houseSize);
   const total = houseHoldPTS + houseSizePTS;
   cfpData.push({
-    firstN: firstname,
-    lastN: lastname,
+    firstN: firstName,
+    lastN: lastName,
     houseM: houseHoldMembers,
     houseS: houseSize,
     houseMPoints: houseHoldPTS,
@@ -22,11 +22,11 @@ function start( firstname,lastname,houseHoldMembers, houseSize){
 
 FORM.addEventListener("submit", function(e){
   e.preventDefault();
-  const firstname = FORM.firstname.value;
-  const lastname = FORM.lastname.value;
+  const firstName = FORM.firstName.value;
+  const lastName = FORM.lastName.value;
   const houseMBS = parseInt(FORM.houseMBS.value);
   const houseSZE = FORM.houseSZE.value;
-  start( firstname, lastname ,houseMBS, houseSZE);
+  start( firstName, lastName ,houseMBS, houseSZE);
   OUTPUT.innerHTML = "";
   // displayOutput(cfpData);
   renderTbl(cfpData);
