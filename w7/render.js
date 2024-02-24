@@ -5,6 +5,7 @@ function renderTblHeading () {
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
     const headingTextArr = ["Name", "HouseHold", "HouseSize", "Footprint", "Actions"];
+    
     headingTextArr.forEach(function(text){
      const th = document.createElement("th");
      th.textContent = text;
@@ -12,7 +13,7 @@ function renderTblHeading () {
     });
     thead.appendChild(tr);
     table.appendChild(thead);  
-    return table 
+    return table; 
   }
   
   function renderTbl(data){
@@ -24,6 +25,7 @@ function renderTblHeading () {
     const td= document.createElement("td");
     td.textContent = text;
   tr.appendChild(td);
+
   })
   const td= document.createElement("td");
   const btnEdit = document.createElement("button");
