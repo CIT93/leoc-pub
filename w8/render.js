@@ -29,9 +29,12 @@ function renderTblHeading () {
       console.log(e);
       data.splice(index, 1);
       renderTbl(data);
+      renderTblHeading();
     })
     btnEdit.addEventListener('click', function(e){
-
+      data.pbject(index, 1);
+      renderTbl(data);
+      renderTblHeading();
     } )
     return td;
   }
