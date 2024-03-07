@@ -1,0 +1,21 @@
+html {
+    font-size: 20px;
+}
+body {
+    background-color: bisque;
+    color: rgb(0, 0, 0);
+}
+input:in-range{
+background-color: green;
+}
+input:out-of-range{
+background-color: blueviolet;    
+}
+table, th, td {
+    border: 1px solid;
+    padding: 6px;
+}
+tbody tr:nth-child(odd) {
+    background-color: rgb(160, 247, 160);
+
+}
